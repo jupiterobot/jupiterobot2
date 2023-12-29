@@ -1,0 +1,116 @@
+Language model created by QuickLM on Tue Aug  8 04:32:30 EDT 2023
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 19 sentences and 26 words
+
+\data\
+ngram 1=26
+ngram 2=43
+ngram 3=24
+
+\1-grams:
+-2.0934 1 -0.2288
+-2.0934 2 -0.2288
+-2.0934 3 -0.2288
+-2.0934 4 -0.2288
+-2.0934 5 -0.2288
+-2.0934 6 -0.2288
+-0.8147 </s> -0.3010
+-0.8147 <s> -0.2288
+-2.0934 AND -0.2975
+-2.0934 BLUE-FLASK -0.2288
+-2.0934 COME -0.2288
+-2.0934 GO -0.2975
+-2.0934 GOOD -0.2288
+-2.0934 GREEN-FLASK -0.2288
+-2.0934 HELLO -0.2288
+-2.0934 I-CONFIRM -0.2288
+-2.0934 NO -0.2288
+-2.0934 NOT-RIGHT -0.2288
+-2.0934 OK -0.2288
+-2.0934 OVER -0.2975
+-2.0934 RED-FLASK -0.2288
+-2.0934 SAY -0.2975
+-2.0934 STOP -0.2288
+-2.0934 THANK -0.2975
+-2.0934 YES -0.2288
+-2.0934 YOU -0.2288
+
+\2-grams:
+-0.3010 1 </s> -0.3010
+-0.3010 2 </s> -0.3010
+-0.3010 3 </s> -0.3010
+-0.3010 4 </s> -0.3010
+-0.3010 5 </s> -0.3010
+-0.3010 6 </s> -0.3010
+-1.5798 <s> 1 0.0000
+-1.5798 <s> 2 0.0000
+-1.5798 <s> 3 0.0000
+-1.5798 <s> 4 0.0000
+-1.5798 <s> 5 0.0000
+-1.5798 <s> 6 0.0000
+-1.5798 <s> BLUE-FLASK 0.0000
+-1.5798 <s> COME 0.0000
+-1.5798 <s> GO 0.0000
+-1.5798 <s> GOOD 0.0000
+-1.5798 <s> GREEN-FLASK 0.0000
+-1.5798 <s> I-CONFIRM 0.0000
+-1.5798 <s> NO 0.0000
+-1.5798 <s> NOT-RIGHT 0.0000
+-1.5798 <s> OK 0.0000
+-1.5798 <s> RED-FLASK 0.0000
+-1.5798 <s> STOP 0.0000
+-1.5798 <s> THANK 0.0000
+-1.5798 <s> YES 0.0000
+-0.3010 AND SAY 0.0000
+-0.3010 BLUE-FLASK </s> -0.3010
+-0.3010 COME </s> -0.3010
+-0.3010 GO OVER 0.0000
+-0.3010 GOOD </s> -0.3010
+-0.3010 GREEN-FLASK </s> -0.3010
+-0.3010 HELLO </s> -0.3010
+-0.3010 I-CONFIRM </s> -0.3010
+-0.3010 NO </s> -0.3010
+-0.3010 NOT-RIGHT </s> -0.3010
+-0.3010 OK </s> -0.3010
+-0.3010 OVER AND 0.0000
+-0.3010 RED-FLASK </s> -0.3010
+-0.3010 SAY HELLO 0.0000
+-0.3010 STOP </s> -0.3010
+-0.3010 THANK YOU 0.0000
+-0.3010 YES </s> -0.3010
+-0.3010 YOU </s> -0.3010
+
+\3-grams:
+-0.3010 <s> 1 </s>
+-0.3010 <s> 2 </s>
+-0.3010 <s> 3 </s>
+-0.3010 <s> 4 </s>
+-0.3010 <s> 5 </s>
+-0.3010 <s> 6 </s>
+-0.3010 <s> BLUE-FLASK </s>
+-0.3010 <s> COME </s>
+-0.3010 <s> GO OVER
+-0.3010 <s> GOOD </s>
+-0.3010 <s> GREEN-FLASK </s>
+-0.3010 <s> I-CONFIRM </s>
+-0.3010 <s> NO </s>
+-0.3010 <s> NOT-RIGHT </s>
+-0.3010 <s> OK </s>
+-0.3010 <s> RED-FLASK </s>
+-0.3010 <s> STOP </s>
+-0.3010 <s> THANK YOU
+-0.3010 <s> YES </s>
+-0.3010 AND SAY HELLO
+-0.3010 GO OVER AND
+-0.3010 OVER AND SAY
+-0.3010 SAY HELLO </s>
+-0.3010 THANK YOU </s>
+
+\end\

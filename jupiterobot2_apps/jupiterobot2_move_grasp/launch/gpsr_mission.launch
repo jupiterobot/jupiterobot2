@@ -1,0 +1,8 @@
+<launch>
+    <node name="arm_pose" pkg="jupiterobot2_move_grasp" type="arm_pose"/>
+    <node name="base_control" pkg="jupiterobot2_move_grasp" type="base_control.py"/>
+    <node name="color_detect" pkg="jupiterobot2_move_grasp" type="color_detect.py"/>
+    <node name="target_tf" pkg="jupiterobot2_move_grasp" type="target_tf.py"/>
+    <node name="navigation_node" pkg="jupiterobot2_move_grasp" type="navigation_node.py" output="screen"/>
+    <node name="base_adjust" pkg="jupiterobot2_move_grasp" type="base_adjust_for_grasp.py" output="screen"/>
+</launch>

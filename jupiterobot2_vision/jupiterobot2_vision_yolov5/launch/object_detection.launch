@@ -1,0 +1,3 @@
+<launch>
+  <node name="object_detection" pkg="jupiterobot2_vision_yolov5" type="object_detection.py" respawn="false" output="screen"/>
+</launch>

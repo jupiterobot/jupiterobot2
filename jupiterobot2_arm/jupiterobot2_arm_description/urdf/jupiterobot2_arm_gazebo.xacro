@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Transmission macro -->
+  <xacro:macro name="SimpleTransmissionPosition" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- Transmission macro -->
+  <xacro:macro name="SimpleTransmissionEffort" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- Transmission 1 -->
+  <xacro:SimpleTransmissionPosition n="1" joint="arm1_joint" />
+
+  <!-- Transmission 2 -->
+  <xacro:SimpleTransmissionPosition n="2" joint="arm2_joint" />
+
+  <!-- Transmission 3 -->
+  <xacro:SimpleTransmissionPosition n="3" joint="arm3_joint" />
+
+  <!-- Transmission 4 -->
+  <xacro:SimpleTransmissionPosition n="4" joint="arm4_joint" />
+
+  <!-- Transmission 5 -->
+  <xacro:SimpleTransmissionPosition n="5" joint="gripper_joint" />
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <controlPeriod>0.001</controlPeriod>
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+</robot>

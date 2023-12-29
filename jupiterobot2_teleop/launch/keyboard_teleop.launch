@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="jupiterobot2_teleop" type="keyboard_teleop" name="jupiter2_teleop_key" output="screen"/>
+</launch>

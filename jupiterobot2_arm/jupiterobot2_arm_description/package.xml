@@ -1,0 +1,16 @@
+<package>
+  <name>jupiterobot2_arm_description</name>
+  <version>1.0.0</version>
+  <description>
+   jupiterobot2_arm_description contains URDF files and meshes for the Jupiter2 arm.
+  </description>
+  <author>Dante Huang</author>
+  <author>Qiang Liu</author>
+  <maintainer email="support@jupiterobot.com">Dante</maintainer>
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+</package>

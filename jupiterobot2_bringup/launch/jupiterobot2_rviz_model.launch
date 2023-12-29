@@ -1,0 +1,11 @@
+<launch>
+  <arg name="model" default="$(env JUPITER2_MODEL)" doc="model type [lite, pro]"/>
+  <arg name="sim" default="false"/>
+
+  <node if="$(arg sim)" pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+    <param name="use_gui" value="true"/>
+    <param name="rate" value="50"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find jupiterobot2_description)/rviz/$(arg model).rviz"/>
+</launch>

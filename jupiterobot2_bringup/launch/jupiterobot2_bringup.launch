@@ -1,0 +1,23 @@
+<launch>
+  <arg name="multi_robot_name" default=""/>
+  <arg name="set_lidar_frame_id" default="base_scan"/>
+  <arg name="model" default="$(env JUPITER2_MODEL)" doc="model type [lite, pro]"/>
+
+  <include file="$(find jupiterobot2_bringup)/launch/jupiterobot2_core.launch">
+    <arg name="multi_robot_name" value="$(arg multi_robot_name)"/>
+  </include>
+  <include file="$(find jupiterobot2_bringup)/launch/jupiterobot2_lidar.launch">
+    <arg name="set_frame_id" value="$(arg set_lidar_frame_id)"/>
+  </include>
+  
+  <include file="$(find jupiterobot2_bringup)/launch/includes/description.launch.xml">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0"/>
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+  </node>
+
+  <node pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="turtlebot3_diagnostics" output="screen"/>
+
+</launch>

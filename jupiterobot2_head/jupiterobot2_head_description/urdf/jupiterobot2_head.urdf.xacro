@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- Describe URDF for Jupiter2 Head -->
+<robot name="jupiterobot2_head" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- We can configure joints velocity limit and lower/upper limits
+         to allow access to different operational areas, e.g. left handed vs. right handed robot -->
+    <xacro:property name="joints_vlimit" value="1.571"/>
+    <xacro:property name="joint_6_llimit" value="-1.5"/>
+    <xacro:property name="joint_6_ulimit" value="1.5"/>
+
+    <!-- Included URDF Files -->   
+    <xacro:include filename="$(find jupiterobot2_head_description)/urdf/jupiterobot2_head.xacro"/>
+
+    <!-- Jupiter2 head macro -->
+    <xacro:jupiterobot2_head parent="head_mount_link" color="White">
+        <origin xyz="0.0 0.0 0.076"/>
+    </xacro:jupiterobot2_head>
+
+</robot>

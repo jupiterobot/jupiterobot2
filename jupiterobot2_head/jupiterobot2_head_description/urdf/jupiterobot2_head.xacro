@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Head description for Jupiter2 Head -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find jupiterobot2_head_description)/urdf/head_hardware.xacro"/>
+  <xacro:include filename="$(find jupiterobot2_head_description)/urdf/camera_top.urdf.xacro"/>
+ 
+  <xacro:macro name="jupiterobot2_head" params="parent color *origin">
+    <joint name="head_base_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="head_base_link"/>
+    </joint>
+    <link name="head_base_link"/>
+
+    <xacro:dynamixel_AX12_fixed parent="head_base_link" name="head_servo">
+      <origin xyz="0 0 ${-AX12_HEIGHT-0.004+0.001}" rpy="0 0 0"/>
+    </xacro:dynamixel_AX12_fixed>
+    <xacro:bioloid_F2_revolute parent="head_servo_link" name="head" color="${color}"
+                vlimit="${joints_vlimit}" llimit="${joint_6_llimit}" ulimit="${joint_6_ulimit}">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:bioloid_F2_revolute>
+    <xacro:bioloid_F3_fixed parent="head_link" name="head_plate" color="${color}">
+      <origin xyz="0 0 ${F2_HEIGHT}" rpy="0 ${M_PI} 0"/>
+    </xacro:bioloid_F3_fixed>
+
+    <!-- camera_top -->
+    <xacro:sensor_camera_top parent="head_plate_link"/>
+
+    <!-- Load -->
+    <xacro:include filename="$(find jupiterobot2_head_description)/urdf/jupiterobot2_head_gazebo.xacro"/>
+
+  </xacro:macro>
+</robot>

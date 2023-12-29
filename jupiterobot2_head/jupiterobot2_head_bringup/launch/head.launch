@@ -1,0 +1,36 @@
+<launch>
+    <param name="/use_sim_time" value="false" />
+    <!-- By default, we are not in debug mode -->
+    <arg name="debug" default="false" />
+
+    <node name="dynamixel_manager_head" pkg="dynamixel_controllers"
+        type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dxl_manager_head
+            serial_ports:
+                pan_tilt_port:
+                    port_name: "/dev/arm"
+                    baud_rate: 1000000
+                    min_motor_id: 6
+                    max_motor_id: 6
+                    update_rate: 20
+        </rosparam>
+    </node>
+
+    <!-- Load the joint controller configuration from a YAML file -->
+    <rosparam file="$(find jupiterobot2_head_bringup)/config/jupiterobot2_head.yaml" command="load"/>
+
+    <!-- Start the head pan and tilt controllers -->
+    <node name="dynamixel_controller_spawner_head" pkg="dynamixel_controllers" type="controller_spawner.py"
+        args="--manager=dxl_manager_head --port=pan_tilt_port --type=simple head_joint"
+        output="screen"/>
+
+    <!-- Start the Dynamixel Joint States Publisher -->
+    <node name="joint_states_publisher_head" pkg="rbx1_dynamixels" type="dynamixel_joint_state_publisher.py" output="screen"/>
+
+    <rosparam file="$(find jupiterobot2_head_bringup)/config/head_group_joints_trajectory_controller.yaml" command="load"/>
+    <node name="controller_spawner_head" pkg="dynamixel_controllers" type="controller_spawner.py"
+        args="--manager=dxl_manager_head --type=meta head_group_controller head_joint"
+        output="screen"/>
+
+</launch>

@@ -1,0 +1,13 @@
+<launch>
+
+  <node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="screen">
+    <param name="mic_name" value="alsa_input.pci-0000_00_1f.3.analog-stereo"/>
+    <param name="hmm" value="/usr/local/share/pocketsphinx/model/en-us/en-us"/>
+    <param name="dict" value="$(find pocketsphinx)/demo/voice_cmd.dic"/>
+    <param name="lm" value="$(find pocketsphinx)/demo/voice_cmd.lm"/>
+    <param name="source" value="alsasrc"/>
+  </node>
+
+  <node name="voice_cmd_vel" pkg="pocketsphinx" type="voice_cmd_vel.py"/>
+
+</launch>

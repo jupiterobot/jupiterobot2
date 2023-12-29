@@ -1,0 +1,14 @@
+joints: ['head_joint']
+
+head_joint:
+    controller:
+        package: dynamixel_controllers
+        module: joint_position_controller
+        type: JointPositionController
+    joint_name: head_joint
+    joint_speed: 0.8
+    motor:
+        id: 6
+        init: 512
+        min: 0
+        max: 1023

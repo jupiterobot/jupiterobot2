@@ -1,0 +1,15 @@
+<launch>
+  <!-- 运行摄像头节点 -->
+  <include file="$(find astra_camera)/launch/astra.launch"/>
+
+  <arg name="input_image_topic" default="/camera/color/image_raw"/>
+
+  <!-- 运行语言播报的功能包 -->
+  <!-- <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/> -->
+
+  <!-- 运行本身 -->
+  <node name="gesture_photograph_node" pkg="jupiterobot2_gesture_photograph" type="gesture_photograph.py">
+    <param name="image_topic" value="$(arg input_image_topic)"/>
+  </node>
+
+</launch>

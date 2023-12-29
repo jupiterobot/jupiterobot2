@@ -1,0 +1,15 @@
+<launch>
+    <include file="$(find jupiterobot2_bringup)/launch/jupiterobot2_bringup.launch"/>
+    <include file="$(find jupiterobot2_bringup)/launch/arm_head_bringup.launch"/>
+    <include file="$(find astra_camera)/launch/astra.launch"/>
+    <include file="$(find jupiterobot2_voice_ps)/launch/voice_recognition.launch">
+        <arg name="dic" value="$(find jupiterobot2_move_grasp)/test/voice.dic"/>
+        <arg name="lm" value="$(find jupiterobot2_move_grasp)/test/voice.lm"/>
+    </include>
+    <include file="$(find jupiterobot2_navigation)/launch/jupiterobot2_navigation.launch">
+        <arg name="map_file" default="/home/mustar/catkin_ws/maps/test.yaml"/>
+    </include>
+    <node name="soundplay" pkg="sound_play" type="soundplay_node.py"/>
+    <!--node pkg="tf" type="static_transform_publisher" name="world_to_camera"
+          args="-0.090 0.012 0.888 -1.57 0 -2.00 /base_footprint /camera_depth_optical_frame 100"/-->
+</launch>

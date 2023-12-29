@@ -1,0 +1,9 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="configuration_basename" default="jupiter2_rplidar_a1.lua"/>
+
+  <!-- slam_karto -->
+  <node pkg="slam_karto" type="slam_karto" name="slam_karto" output="screen">
+    <rosparam command="load" file="$(find jupiterobot2_navigation)/config/karto_mapper_params.yaml" />
+  </node>
+</launch>

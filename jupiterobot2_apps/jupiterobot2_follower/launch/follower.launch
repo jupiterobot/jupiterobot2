@@ -1,0 +1,8 @@
+<launch>
+
+  <include file="$(find astra_camera)/launch/astra.launch"/>
+  <node name="jupiterobot2_follower" pkg="jupiterobot2_follower" type="jupiterobot2_follower" output="screen">
+    <param name="enabled" value="true"/>
+  </node>
+
+</launch>

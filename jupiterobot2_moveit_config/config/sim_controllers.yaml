@@ -1,0 +1,54 @@
+arm_group_gazebo:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - arm1_joint
+    - arm2_joint
+    - arm3_joint
+    - arm4_joint
+    - gripper_link_joint
+  gains:
+    arm1_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm2_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm3_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    arm4_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    gripper_link_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+gripper_group_gazebo:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - gripper_joint
+  gains:
+    gripper_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+head_group_gazebo:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - head_joint
+  gains:
+    head_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

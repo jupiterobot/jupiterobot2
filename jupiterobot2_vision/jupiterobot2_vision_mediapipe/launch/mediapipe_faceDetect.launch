@@ -1,0 +1,16 @@
+<launch>
+    <arg name="input_image_topic" default="/camera/color/image_raw"/>
+    <arg name="detect_mode" default="2">
+        <!-- 
+        0 - pose_detect
+        1 - hand_detect
+        2 - face_detect
+        3 - face_mesh
+        -->
+        <description>Detection mode (0, 1, 2, or 3)</description>
+    </arg>
+    <node pkg="jupiterobot2_vision_mediapipe" type ="mediapipe_demo.py"  name="mediapipe_demo">
+        <param name="detect_mode" value="$(arg detect_mode)"/>
+        <param name="image_topic" value="$(arg input_image_topic)"/>
+    </node>
+</launch>

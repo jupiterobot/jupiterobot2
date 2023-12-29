@@ -1,0 +1,17 @@
+<!--
+  Driver for the logitech joystick.
+  Use the D pad while pressing and holding the left trigger button (5) to control.
+-->
+<launch>
+  <node pkg="jupiterobot2_teleop" type="joystick_teleop" name="jupiter2_teleop_joy" output="screen">
+    <param name="scale_angular" value="1.5"/>
+    <param name="scale_linear" value="0.5"/>
+    <param name="axis_linear" value="0.5"/>
+    <param name="axis_angular" value="0"/>
+    <param name="axis_deadman" value="5"/>
+    <param name="button_accelerate" value="4"/>
+  </node>
+  <node pkg="joy" type="joy_node" name="joystick">
+    <param name="dev" type="string" value="/dev/input/js1"/>
+  </node>
+</launch>

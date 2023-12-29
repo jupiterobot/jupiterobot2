@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- Describe URDF for Jupiter2 Arm -->
+<robot name="jupiterobot2_arm" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- We can configure joints velocity limit and lower/upper limits
+         to allow access to different operational areas, e.g. left handed vs. right handed robot -->
+    <xacro:property name="joints_vlimit" value="1.571"/>
+    <xacro:property name="arm1_llimit" value="-2.617"/>
+    <xacro:property name="arm1_ulimit" value="2.617"/>
+    <xacro:property name="arm2_llimit" value="-2.617"/>
+    <xacro:property name="arm2_ulimit" value="2.617"/>
+    <xacro:property name="arm3_llimit" value="-2.617"/>
+    <xacro:property name="arm3_ulimit" value="2.617"/>
+    <xacro:property name="arm4_llimit" value="-1.745"/>
+    <xacro:property name="arm4_ulimit" value="1.745"/>
+
+    <!-- Included URDF Files -->   
+    <xacro:include filename="$(find jupiterobot2_arm_description)/urdf/jupiterobot2_arm.xacro"/>
+
+    <!-- As we don't have here a robot base, add a base_link link as its location reference -->
+    <!--link name="arm_mount_link"/-->
+
+    <!-- Jupiter2 arm macro -->
+    <xacro:jupiterobot2_arm parent="arm_mount_link" color="White" gripper_color="Black">
+      <!-- Place the "floating" arm at the location it should be -->
+      <origin xyz="0.0 0.0 -0.015"/>
+    </xacro:jupiterobot2_arm>
+</robot>

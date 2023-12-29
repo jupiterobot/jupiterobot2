@@ -1,0 +1,15 @@
+<launch>
+
+  <node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="screen">
+    <param name="mic_name" value="alsa_input.pci-0000_00_1f.3.analog-stereo"/>
+    <param name="hmm" value="/usr/local/share/pocketsphinx/model/en-us/en-us"/>
+    <param name="dict" value="$(find jupiterobot2_partybot)/speech/partybot.dic"/>
+    <param name="lm" value="$(find jupiterobot2_partybot)/speech/partybot.lm"/>
+  </node>
+
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+  <node name="dance_arm" pkg="jupiterobot2_partybot" type="dance_arm.py"/>
+  <node name="take_photo" pkg="jupiterobot2_partybot" type="take_photo.py"/>
+  <node name="partybot" pkg="jupiterobot2_partybot" type="partybot.py"/>
+
+</launch>

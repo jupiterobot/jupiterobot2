@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jupiterobot2_voice_ps</name>
+  <version>1.0.0</version>
+  <description>The jupiterobot2_voice_ps package</description>
+
+  <maintainer email="support@jupiterobot.com">Jupiter Robot</maintainer>
+
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+
+</package>
