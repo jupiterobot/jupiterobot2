@@ -24,7 +24,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import mediapipe as mp
 import time
 # 导入自定义的数据类型和处理函数
-from jupiterobot2_msgs.msg import Mediapipe_Pose, Mediapipe_Hand, Mediapipe_Face
+from jupiterobot2_msgs.msg import Mediapipe_Pose, Mediapipe_Hand, Mediapipe_Face, Mediapipe_FaceBbox, Mediapipe_FaceBboxes
 
 def pose_topic_data(self, output_point):
     '''
@@ -144,76 +144,76 @@ def hand_topic_data(self, output_point):
         self.hand_joints.WRIST.x = output_point[0][0]
         self.hand_joints.WRIST.y = output_point[0][1]
         # 1 THUMB_CMC 拇指中心点
-        self.hand_joints.THUMB_CMC.x = output_point[0][0]
-        self.hand_joints.THUMB_CMC.y = output_point[0][1]
+        self.hand_joints.THUMB_CMC.x = output_point[1][0]
+        self.hand_joints.THUMB_CMC.y = output_point[1][1]
         # 2 THUMB_MCP 拇指第一关节点
-        self.hand_joints.THUMB_MCP.x = output_point[0][0]
-        self.hand_joints.THUMB_MCP.y = output_point[0][1]
+        self.hand_joints.THUMB_MCP.x = output_point[2][0]
+        self.hand_joints.THUMB_MCP.y = output_point[2][1]
         # 3 THUMB_IP 拇指第二关节点
-        self.hand_joints.THUMB_IP.x = output_point[0][0]
-        self.hand_joints.THUMB_IP.y = output_point[0][1]
+        self.hand_joints.THUMB_IP.x = output_point[3][0]
+        self.hand_joints.THUMB_IP.y = output_point[3][1]
         # 4 THUMB_TIP 拇指第三关节点
-        self.hand_joints.THUMB_TIP.x = output_point[0][0]
-        self.hand_joints.THUMB_TIP.y = output_point[0][1]
+        self.hand_joints.THUMB_TIP.x = output_point[4][0]
+        self.hand_joints.THUMB_TIP.y = output_point[4][1]
         # 5 INDEX_FINGER_MCP 食指中心点
-        self.hand_joints.INDEX_FINGER_MCP.x = output_point[0][0]
-        self.hand_joints.INDEX_FINGER_MCP.y = output_point[0][1]
+        self.hand_joints.INDEX_FINGER_MCP.x = output_point[5][0]
+        self.hand_joints.INDEX_FINGER_MCP.y = output_point[5][1]
         # 6 INDEX_FINGER_PIP 食指第一关节点
-        self.hand_joints.INDEX_FINGER_PIP.x = output_point[0][0]
-        self.hand_joints.INDEX_FINGER_PIP.y = output_point[0][1]
+        self.hand_joints.INDEX_FINGER_PIP.x = output_point[6][0]
+        self.hand_joints.INDEX_FINGER_PIP.y = output_point[6][1]
         # 7 INDEX_FINGER_DIP 食指第二关节点
-        self.hand_joints.INDEX_FINGER_DIP.x = output_point[0][0]
-        self.hand_joints.INDEX_FINGER_DIP.y = output_point[0][1]
+        self.hand_joints.INDEX_FINGER_DIP.x = output_point[7][0]
+        self.hand_joints.INDEX_FINGER_DIP.y = output_point[7][1]
         # 8 INDEX_FINGER_TIP 食指第三关节点
-        self.hand_joints.INDEX_FINGER_TIP.x = output_point[0][0]
-        self.hand_joints.INDEX_FINGER_TIP.y = output_point[0][1]
+        self.hand_joints.INDEX_FINGER_TIP.x = output_point[8][0]
+        self.hand_joints.INDEX_FINGER_TIP.y = output_point[8][1]
         # 9 MIDDLE_FINGER_MCP 中指中心点
-        self.hand_joints.MIDDLE_FINGER_MCP.x = output_point[0][0]
-        self.hand_joints.MIDDLE_FINGER_MCP.y = output_point[0][1]
+        self.hand_joints.MIDDLE_FINGER_MCP.x = output_point[9][0]
+        self.hand_joints.MIDDLE_FINGER_MCP.y = output_point[9][1]
         # 10 MIDDLE_FINGER_PIP 中指第一关节点
-        self.hand_joints.MIDDLE_FINGER_PIP.x = output_point[0][0]
-        self.hand_joints.MIDDLE_FINGER_PIP.y = output_point[0][1]
+        self.hand_joints.MIDDLE_FINGER_PIP.x = output_point[10][0]
+        self.hand_joints.MIDDLE_FINGER_PIP.y = output_point[10][1]
         # 11 MIDDLE_FINGER_DIP 中指第二关节点
-        self.hand_joints.MIDDLE_FINGER_DIP.x = output_point[0][0]
-        self.hand_joints.MIDDLE_FINGER_DIP.y = output_point[0][1]
+        self.hand_joints.MIDDLE_FINGER_DIP.x = output_point[11][0]
+        self.hand_joints.MIDDLE_FINGER_DIP.y = output_point[11][1]
         # 12 MIDDLE_FINGER_TIP 中指第三关节点
-        self.hand_joints.MIDDLE_FINGER_TIP.x = output_point[0][0]
-        self.hand_joints.MIDDLE_FINGER_TIP.y = output_point[0][1]
+        self.hand_joints.MIDDLE_FINGER_TIP.x = output_point[12][0]
+        self.hand_joints.MIDDLE_FINGER_TIP.y = output_point[12][1]
         # 13 RING_FINGER_MCP 无名指中心点
-        self.hand_joints.RING_FINGER_MCP.x = output_point[0][0]
-        self.hand_joints.RING_FINGER_MCP.y = output_point[0][1]
+        self.hand_joints.RING_FINGER_MCP.x = output_point[13][0]
+        self.hand_joints.RING_FINGER_MCP.y = output_point[13][1]
         # 14 RING_FINGER_PIP 无名指第一关节点
-        self.hand_joints.RING_FINGER_PIP.x = output_point[0][0]
-        self.hand_joints.RING_FINGER_PIP.y = output_point[0][1]
+        self.hand_joints.RING_FINGER_PIP.x = output_point[14][0]
+        self.hand_joints.RING_FINGER_PIP.y = output_point[14][1]
         # 15 RING_FINGER_DIP 无名指第二关节点
-        self.hand_joints.RING_FINGER_DIP.x = output_point[0][0]
-        self.hand_joints.RING_FINGER_DIP.y = output_point[0][1]
+        self.hand_joints.RING_FINGER_DIP.x = output_point[15][0]
+        self.hand_joints.RING_FINGER_DIP.y = output_point[15][1]
         # 16 RING_FINGER_TIP 无名指第三关节点
-        self.hand_joints.RING_FINGER_TIP.x = output_point[0][0]
-        self.hand_joints.RING_FINGER_TIP.y = output_point[0][1]
+        self.hand_joints.RING_FINGER_TIP.x = output_point[16][0]
+        self.hand_joints.RING_FINGER_TIP.y = output_point[16][1]
         # 17 PINCKY_MCP 小指中心点
-        self.hand_joints.PINCKY_MCP.x = output_point[0][0]
-        self.hand_joints.PINCKY_MCP.y = output_point[0][1]
+        self.hand_joints.PINCKY_MCP.x = output_point[17][0]
+        self.hand_joints.PINCKY_MCP.y = output_point[17][1]
         # 18 PINCKY_PIP 小指第一关节点
-        self.hand_joints.PINCKY_PIP.x = output_point[0][0]
-        self.hand_joints.PINCKY_PIP.y = output_point[0][1]
+        self.hand_joints.PINCKY_PIP.x = output_point[18][0]
+        self.hand_joints.PINCKY_PIP.y = output_point[18][1]
         # 19 PINCKY_DIP 小指第二关节点
-        self.hand_joints.PINCKY_DIP.x = output_point[0][0]
-        self.hand_joints.PINCKY_DIP.y = output_point[0][1]
+        self.hand_joints.PINCKY_DIP.x = output_point[19][0]
+        self.hand_joints.PINCKY_DIP.y = output_point[19][1]
         # 20 PINCKY_TIP 小指第三关节点
-        self.hand_joints.PINCKY_TIP.x = output_point[0][0]
-        self.hand_joints.PINCKY_TIP.y = output_point[0][1]
+        self.hand_joints.PINCKY_TIP.x = output_point[20][0]
+        self.hand_joints.PINCKY_TIP.y = output_point[20][1]
 
-    # 发布话题
-    self.hand_publisher.publish(self.hand_joints)
+        # 发布话题
+        self.hand_publisher.publish(self.hand_joints)
 
 def face_topic_data(self, output_point):
     if len(output_point)==468:
         for i in range(468):
             self.face_joints.face_point[i].x = output_point[i][0]
             self.face_joints.face_point[i].y = output_point[i][1]
-    # 发布话题
-    self.face_publisher.publish(self.face_joints)
+        # 发布话题
+        self.face_publisher.publish(self.face_joints)
 
 class MediaPipe_Pose:
     def __init__(self, select_detect=0):
@@ -242,25 +242,28 @@ class MediaPipe_Pose:
         rospy.Subscriber(image_topic, Image, self.image_callback)
 
         # 发布姿态关键点
-        self.pose_publisher = rospy.Publisher("mediapipe/pose",Mediapipe_Pose,queue_size=10)
+        self.pose_publisher = rospy.Publisher("mediapipe/pose", Mediapipe_Pose, queue_size=10)
         self.pose_joints = Mediapipe_Pose()
 
         # 人手关键点
-        self.hand_publisher = rospy.Publisher("mediapipe/hand",Mediapipe_Hand,queue_size=10)
+        self.hand_publisher = rospy.Publisher("mediapipe/hand", Mediapipe_Hand, queue_size=10)
         self.hand_joints = Mediapipe_Hand()
 
         # 人脸关键点
-        self.face_publisher = rospy.Publisher("mediapipe/face",Mediapipe_Face,queue_size=10)
+        self.face_publisher = rospy.Publisher("mediapipe/face", Mediapipe_Face, queue_size=10)
         self.face_joints = Mediapipe_Face()
+
+        # 人脸位置检测
+        self.face_pos_publisher = rospy.Publisher("mediapipe/face_pos", Mediapipe_FaceBboxes, queue_size=10)
 
         # 保持节点运行q
         rospy.spin()
 
     def detect_pose(self, image, draw=True):
         '''
-            返回值说明：
-            image-识别处理后的图片， 每次只能识别一个人，多个人时，会不知道是哪个人。
-            point_list-返回的32个点的坐标。
+        返回值说明：
+        image-识别处理后的图片，每次只能识别一个人，多个人时，会不知道是哪个人
+        point_list-返回的32个点的坐标
         '''
         results = self.pose.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
         h, w, c = image.shape
@@ -273,8 +276,8 @@ class MediaPipe_Pose:
             for id, lm in enumerate(results.pose_landmarks.landmark):
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 point_list.append([cx, cy])
-        # 数据发布处理
-        pose_topic_data(self,point_list)
+            # 数据发布处理
+            pose_topic_data(self, point_list)
         return image
 
     def detect_hand(self, image, draw=True):
@@ -287,7 +290,7 @@ class MediaPipe_Pose:
         results = self.hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
         point_list = []
         if results.multi_hand_landmarks and draw:
-            for hand_landmarks, hand_class in zip(results.multi_hand_landmarks,results.multi_handedness):
+            for hand_landmarks, hand_class in zip(results.multi_hand_landmarks, results.multi_handedness):
                 self.mpDraw.draw_landmarks(image,
                                            hand_landmarks,
                                            self.mpHands.HAND_CONNECTIONS,
@@ -302,26 +305,34 @@ class MediaPipe_Pose:
 
     def detect_face(self, image):
         '''
-            返回值：
-            image-识别处理后的图片
-            point_list-识别到人脸的置信度, 左上角坐标 x,y, 脸框宽和高 w,h, 检测到多少人，该列表便有多少个元素
-                         [[置信度, x, y, w, h]]
-                    例如：[[0.9228333830833435, 264, 184, 163, 163]] 
+        返回值：
+        image-识别处理后的图片
+        face_bboxes-bounding_box，识别到人脸的id，左上角坐标x,y，脸框宽和高w,h，置信度。检测到多少人，该列表便有多少个元素
+            [[id, x, y, w, h, 置信度]]  例如：[[0, 264, 184, 163, 163, 0.9228333830833435]]
         '''
         ih, iw, ic = image.shape
         results = self.face.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-        point_list = []
         if results.detections:
+            face_bboxes = Mediapipe_FaceBboxes()
+            face_id = 0
             for detection in results.detections:
                 # self.mpDraw.draw_detection(image, detection)
                 # print(detection.score)
                 bboxC = detection.location_data.relative_bounding_box
                 bbox = int(bboxC.xmin * iw), int(bboxC.ymin * ih), int(bboxC.width * iw), int(bboxC.height * ih)
-
                 image = self.fancyDraw(image, bbox)
-
                 cv2.putText(image, str(int(detection.score[0]*100))+"%", (bbox[0], bbox[1]-20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255), 2)
-                point_list.append([detection.score[0], bbox[0], bbox[1],bbox[2],bbox[3]])
+                face_bbox = Mediapipe_FaceBbox()
+                face_bbox.id = face_id
+                face_bbox.xmin = bbox[0]
+                face_bbox.ymin = bbox[1]
+                face_bbox.width = bbox[2]
+                face_bbox.height = bbox[3]
+                face_bbox.confidence = detection.score[0]
+                face_bboxes.bboxes.append(face_bbox)
+                face_id += 1
+            # 发布话题
+            self.face_pos_publisher.publish(face_bboxes)
         return image
 
     def fancyDraw(self, image, bbox, l=20, t=3):
@@ -350,7 +361,7 @@ class MediaPipe_Pose:
         """
         返回值说明：
         image-识别处理后的图片
-        point_list-468个特制点,具体对应位置，见图片
+        point_list-468个特制点，具体对应位置，见图片
         """
         point_list = []
         results = self.faceMesh.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
@@ -380,35 +391,35 @@ class MediaPipe_Pose:
 
     def image_callback(self, msg):
         try:
-                # 将ROS图像数据转换为OpenCV图像
-                cv_image = CvBridge().imgmsg_to_cv2(msg, "bgr8")
+            # 将ROS图像数据转换为OpenCV图像
+            cv_image = CvBridge().imgmsg_to_cv2(msg, "bgr8")
 
-                # 调整图像大小以加快处理速度
-                # cv_image = cv2.resize(cv_image, (640, 480))
+            # 调整图像大小以加快处理速度
+            # cv_image = cv2.resize(cv_image, (640, 480))
 
-                if self.select_detect==0:
-                    out_image = self.detect_pose(cv_image)
-                elif self.select_detect==1:
-                    out_image = self.detect_hand(cv_image)
-                elif self.select_detect==2:
-                    out_image = self.detect_face(cv_image)
-                elif self.select_detect==3:
-                    out_image = self.face_mesh(cv_image)
-                else:
-                    print("功能序号出错,请选择正确的序号:0-pose, 1-hand, 2-face_detect, 3-face_mesh")
-                cTime = time.time()
-                fps = 1 / (cTime - self.pTime)
-                self.pTime = cTime
+            if self.select_detect==0:
+                out_image = self.detect_pose(cv_image)
+            elif self.select_detect==1:
+                out_image = self.detect_hand(cv_image)
+            elif self.select_detect==2:
+                out_image = self.detect_face(cv_image)
+            elif self.select_detect==3:
+                out_image = self.face_mesh(cv_image)
+            else:
+                print("功能序号出错，请选择正确的序号：0-pose, 1-hand, 2-face_detect, 3-face_mesh")
+            cTime = time.time()
+            fps = 1 / (cTime - self.pTime)
+            self.pTime = cTime
 
-                cv2.putText(out_image, f"FPS:{fps:.1f}", (20, 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 3)
+            cv2.putText(out_image, f"FPS:{fps:.1f}", (20, 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 3)
 
-                # 显示图像
-                cv2.imshow("Image window", out_image)
+            # 显示图像
+            cv2.imshow("Image window", out_image)
 
-                # 按q退出
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                    rospy.signal_shutdown('Exit')
-                    cv2.destroyAllWindows()
+            # 按q退出
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                rospy.signal_shutdown('Exit')
+                cv2.destroyAllWindows()
 
         except CvBridgeError as e:
             print(e)

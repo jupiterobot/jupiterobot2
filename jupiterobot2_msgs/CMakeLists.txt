@@ -54,6 +54,8 @@ add_message_files(
   Mediapipe_Pose.msg
   Mediapipe_Hand.msg
   Mediapipe_Face.msg
+  Mediapipe_FaceBbox.msg
+  Mediapipe_FaceBboxes.msg
   ObjectMsg.msg
   YoloMsg.msg
 )
